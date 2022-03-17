@@ -14,11 +14,19 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) {
-        QuickPane test = new QuickPane();
+        RadixPane test = new RadixPane();
         Scene scene = new Scene(test, 640, 380);
         stage.setScene(scene);
         stage.show();
-        //scene.getRoot().setStyle(STYLESHEET_CASPIAN);
+        test.ALIGN(scene.getHeight(), scene.getWidth());
+        
+        /*
+        RadixPane test2 = new RadixPane();
+        Scene scene2 = new Scene(test2, 640, 380);
+        stage.setScene(scene2);
+        stage.show();
+        test.ALIGN(scene2.getHeight(), scene2.getWidth());
+*/
     }
 
     public static void main(String[] args) {

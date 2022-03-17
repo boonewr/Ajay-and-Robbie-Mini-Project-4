@@ -15,5 +15,6 @@ public class QuickPane extends ListPane {
         getChildren().add(test);
         test.relocate(400, 0);
         randomButton.setText("randomize");
+        //test.relocate(this.getWidth(), this.getHeight());
     }
 }
