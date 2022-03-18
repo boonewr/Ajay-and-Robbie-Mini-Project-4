@@ -1,4 +1,5 @@
-/*
+/**
+ * Just testing ATM
  */
 package com.mycompany.sortingproject;
 
@@ -14,7 +15,7 @@ public class QuickPane extends ListPane {
     public QuickPane() {
         getChildren().add(test);
         test.relocate(400, 0);
-        randomButton.setText("randomize");
+        //randomButton.setText("randomize");
         //test.relocate(this.getWidth(), this.getHeight());
     }
 }
