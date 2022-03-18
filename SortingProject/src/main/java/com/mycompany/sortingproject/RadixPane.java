@@ -8,15 +8,16 @@ import javafx.event.ActionEvent;
  * @author wrboo
  */
 public class RadixPane extends ListPane {
-    //Button sortButton = new Button("Sort");
+    int step = 1;
     
     public RadixPane() {
-        sortButton.setOnAction(this::processSort);
         setDescription("radix sort is fancy blah blah blah O(n)");
         setName("Radix Sort!");
     }
     
-    public void processSort(ActionEvent evt) {
+    /*
+    @Override
+    public void processSortButton(ActionEvent evt) {
         /*
         int max = MasterList.get(0);
         System.out.println(MasterList.toString());
@@ -54,7 +55,7 @@ public class RadixPane extends ListPane {
             MasterList.set(i, output.get(i));
         }
         
-*/      
+     
         int[] a = new int[MasterList.size()];
         for (int i = 0; i < a.length; i++) {
             a[i] = MasterList.get(i);
@@ -95,8 +96,31 @@ public class RadixPane extends ListPane {
             //TimeUnit.SECONDS.
         }
         
-        
+        System.out.println("Sorted");
         updateListDisplay();
     }
+    */
+    
+    @Override
+    protected void processSortButton(ActionEvent evt) {
+        switch (step) {
+            case 1:
+                System.out.println("Step 1");
+                step++;
+                break;
+            case 2: 
+                System.out.println("Step 2");
+                step++;
+                break;
+            case 3: 
+                System.out.println("Step 3");
+                step++;
+                break;
+            default:
+                System.out.println("What");
+                break;
+        }
+    }
+    
     
 }

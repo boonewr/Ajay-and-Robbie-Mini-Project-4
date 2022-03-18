@@ -1,8 +1,11 @@
 /**
  * Methods that MUST BE IMPLEMENTED: setName, setDescription,
- * attach processSort method to button in panel itself. sortButton is public
- * Remember: step through sort method 1 at a time. Create a nextButton event handler 
- * that sets sortButton visibility to false and somehow steps through the sort method.
+ * Override processSortButton in the sort pane, the event handler is already attached to the button
+ * Remember: step through sort method 1 at a time. The idea I'm going with is have a switch statement 
+ * in the overriding processSortButton method that starts with an int = 1, does step 1, step++, now runs 
+ * branch 2 when the button is pressed, step++, now runs branch 3, etc etc.
+ * Note that however you implement it make sure to use the setText() method on sortButton to make it say
+ * "Next" in the first branch
  */
 package com.mycompany.sortingproject;
 
@@ -26,8 +29,8 @@ public class ListPane extends Pane {
 
     /**
      * The displayed list. Updated with the random button or when the user
-     * enters values. Note: call the update method updateListDisplay() during and post-sort to
-     * update the displayed list
+     * enters values. Note: call the update method updateListDisplay() during
+     * and post-sort to update the displayed list
      */
     public ArrayList<Integer> MasterList = new ArrayList<Integer>();
     public ArrayList<TextField> fieldList = new ArrayList<TextField>();
@@ -35,25 +38,30 @@ public class ListPane extends Pane {
     private TextField sizeField = new TextField("Enter preffered list size");
     private Button randomButton = new Button("Randomize");
     private Button resetButton = new Button("Reset");
-    public Button sortButton = new Button("Sort!");
-    public Button nextButton = new Button("Next");
+    protected Button sortButton = new Button("Sort!");
     private Text sortName = new Text("name of sort type goes here");
     private Text sortDescription = new Text("sortDescription goes here");
 
     public ListPane() {
-        getChildren().addAll(sizeField, randomButton, sortDescription, sortName, resetButton, sortButton, nextButton);
+        getChildren().addAll(sizeField, randomButton, sortDescription, sortName, resetButton, sortButton);
 
         sizeField.setOnAction(this::processSizeField);
         randomButton.setOnAction(this::processRandomButton);
         resetButton.setOnAction(this::processResetButton);
+        sortButton.setOnAction(this::processSortButton);
+        
 
         randomButton.setVisible(false);
         resetButton.setVisible(false);
         sortButton.setVisible(false);
-        nextButton.setVisible(false);
 
         sortName.setFont(Font.font("Arial", 20));
     }
+
+    protected void processSortButton(ActionEvent evt) {
+        System.out.println("Override it");
+    }
+    
 
     // Event handlers
     /**
@@ -132,7 +140,6 @@ public class ListPane extends Pane {
         sortDescription.relocate(10, 50);
         resetButton.relocate(randomButton.getLayoutX(), randomButton.getLayoutY() + randomButton.getHeight());
         sortButton.relocate(resetButton.getLayoutX(), resetButton.getLayoutY() + resetButton.getHeight());
-        nextButton.relocate(sortButton.getLayoutX(), sortButton.getLayoutY());
 
         // Add whatever
         // I'm not dead set on any of this layout, change it to what you want or lmk any ideas
