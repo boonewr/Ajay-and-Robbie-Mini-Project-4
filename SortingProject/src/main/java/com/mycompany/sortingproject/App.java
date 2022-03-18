@@ -12,6 +12,12 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
+    
+    /**
+     * The last step can be making the tab interface thingy with all the options in it, as well as the 'home page' with the basic description
+     * for now just uncomment whatever block you need to test the sort method panel you're working on
+     * @param stage 
+     */
     @Override
     public void start(Stage stage) {
         RadixPane test = new RadixPane();
@@ -21,12 +27,20 @@ public class App extends Application {
         test.ALIGN(scene.getHeight(), scene.getWidth());
         
         /*
-        RadixPane test2 = new RadixPane();
-        Scene scene2 = new Scene(test2, 640, 380);
-        stage.setScene(scene2);
+        QuickPane test = new QuickPane();
+        Scene scene = new Scene(test, 640, 380);
+        stage.setScene(scene);
         stage.show();
-        test.ALIGN(scene2.getHeight(), scene2.getWidth());
-*/
+        test.ALIGN(scene.getHeight(), scene.getWidth());
+        */
+        
+        /*
+        [...]Pane test = new [...]Pane();
+        Scene scene = new Scene(test, 640, 380);
+        stage.setScene(scene);
+        stage.show();
+        test.ALIGN(scene.getHeight(), scene.getWidth());
+        */
     }
 
     public static void main(String[] args) {

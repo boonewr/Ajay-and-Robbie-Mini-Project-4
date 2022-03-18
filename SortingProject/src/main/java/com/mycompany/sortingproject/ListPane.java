@@ -26,7 +26,7 @@ public class ListPane extends Pane {
 
     /**
      * The displayed list. Updated with the random button or when the user
-     * enters values. Note: call the update method during and post-sort to
+     * enters values. Note: call the update method updateListDisplay() during and post-sort to
      * update the displayed list
      */
     public ArrayList<Integer> MasterList = new ArrayList<Integer>();
