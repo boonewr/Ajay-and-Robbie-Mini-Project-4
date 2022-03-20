@@ -8,7 +8,7 @@ public class SelectionPane extends ListPane {
     int step = 1;
     
     public SelectionPane() {
-        setDescription("Selection sort is a simple sorting algorithm that selects the index associated with the smallest value and swaps from left to right of the data");
+        setDescription(\"Selection sort goes left to right, " + "\nswapping by picking the lowest value " + "\nuntil all of the data is sorted\"");
         setName("Selection Sort!");
     }
     
