@@ -21,6 +21,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         RadixPane test = new RadixPane();
+        // SelectionPane test = new SelectionPane();
+        // InsertionPane test = new InsertionPane();
         Scene scene = new Scene(test, 640, 380);
         stage.setScene(scene);
         stage.show();
