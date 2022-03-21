@@ -23,7 +23,7 @@ public class QuickPane extends ListPane {
 
         stepDescription.setVisible(false);
         stepDescription.setWrappingWidth(250);
-        stepDescription.relocate(200, 200);
+        stepDescription.relocate(200, 450);
     }
     
     @Override
