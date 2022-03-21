@@ -71,7 +71,7 @@ public class ListPane extends Pane {
      *
      * @param evt
      */
-    private void processResetButton(ActionEvent evt) {
+    protected void processResetButton(ActionEvent evt) {
         for (int i = 0; i < MasterList.size(); i++) {
             MasterList.set(i, 0);
         }
