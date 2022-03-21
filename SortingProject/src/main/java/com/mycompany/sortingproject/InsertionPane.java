@@ -13,7 +13,7 @@ public class InsertionPane extends ListPane {
     int step = 1;
     
     public InsertionPane() {
-        setDescription("Insertion sort is an algorithm that " + "\ncontinues to insert the appropriate sorted value with the rest of the sorted " + "\ndata step-by-step until the data is sorted");
+        setDescription("Insertion sort is an algorithm that " + "\ncontinues to insert the appropriate sorted value with the rest of the sorted " + "\ndata step-by-step until the data is sorted. " + "\nRuntime: 0(N^2), Steps: N-1");
         setName("Insertion Sort!");
     }
     
