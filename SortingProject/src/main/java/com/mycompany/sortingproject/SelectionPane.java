@@ -13,7 +13,7 @@ public class SelectionPane extends ListPane {
     int step = 1;
     
     public SelectionPane() {
-        setDescription("\"Selection sort goes left to right, " + "\nswapping by picking the lowest value " + "\nuntil all of the data is sorted\"");
+        setDescription("\"Selection sort goes left to right, " + "\nswapping by picking the lowest value " + "\nuntil all of the data is sorted." + "\nRuntime: 0(N^2), Steps: N-1"\"");
         setName("Selection Sort!");
     }
     
