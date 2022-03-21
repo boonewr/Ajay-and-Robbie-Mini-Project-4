@@ -12,7 +12,7 @@ public class RadixPane extends ListPane {
     int step = 1;
     
     public RadixPane() {
-        setDescription("radix sort is fancy blah blah blah O(n)");
+        setDescription("Radix sort is a unique sorting algoritm because it does not use any logical comparisons. " + "\nThis allows the time complexity to be only O(nd) " + "\nwhere d is the maximum number of digits. " + "\nHowever, radix " + "\nsort has " + "\nthe drawback " + "\nof only working " + "\nfor integers");
         setName("Radix Sort!");
     }
     
