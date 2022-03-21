@@ -23,7 +23,7 @@ public class App extends Application {
         RadixPane test = new RadixPane();
         // SelectionPane test = new SelectionPane();
         // InsertionPane test = new InsertionPane();
-        Scene scene = new Scene(test, 640, 380);
+        Scene scene = new Scene(test, 740, 400);
         stage.setScene(scene);
         stage.show();
         test.ALIGN(scene.getHeight(), scene.getWidth());
