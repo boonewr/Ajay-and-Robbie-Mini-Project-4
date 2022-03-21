@@ -8,7 +8,7 @@ import javafx.event.ActionEvent;
 
 /**
  *
- * @author Ajay
+ * @author Robbie
  */
 public class QuickPane extends ListPane {
     
