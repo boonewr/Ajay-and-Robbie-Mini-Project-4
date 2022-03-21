@@ -1,6 +1,3 @@
-/**
- * Just testing ATM
- */
 package com.mycompany.sortingproject;
 
 import javafx.event.ActionEvent;
@@ -9,7 +6,7 @@ import javafx.scene.text.Text;
 
 /**
  *
- * @author wrboo
+ * @author Robbie
  */
 public class QuickPane extends ListPane {
 
@@ -26,6 +23,10 @@ public class QuickPane extends ListPane {
         stepDescription.relocate(200, 450);
     }
     
+    /**
+     * Does everything the method of the same name in ListPane does, except also resets the step counter here in QuickPane to allow for subsequent runs.
+     * @param evt 
+     */
     @Override
     protected void processResetButton(ActionEvent evt) {
         for (int i = 0; i < MasterList.size(); i++) {
@@ -40,8 +41,15 @@ public class QuickPane extends ListPane {
     static int[] a, c;
     static int first, last, mid, pivotValue;
     
+    /**
+     * Sorting algorithm adopted from the in class example from the SortingAlogithms project
+     * @param evt 
+     */
     @Override
     protected void processSortButton(ActionEvent evt) {
+        // two lists are used for illustrative purposes
+        // similar to radix sort the most consistent method of splitting the sort into steps was running through the whole algorithm up to a certain point for
+        // every step. Arrays a, c, and later b, are to maintain continuity with the original list of numbers across steps.
         a = new int[MasterList.size()];
         for (int i = 0; i < MasterList.size(); i++) {
             a[i] = MasterList.get(i);
@@ -51,7 +59,9 @@ public class QuickPane extends ListPane {
             c[i] = MasterList.get(i);
         }
 
+        
         switch (step) {
+            // finds the pivot
             case 1:
                 first = 0;
                 last = a.length;
@@ -68,6 +78,7 @@ public class QuickPane extends ListPane {
                 sortButton.setText("Next");
                 break;
 
+            // sorts pivot and first/last values 
             case 2:
                 if (a[first] > a[mid]) {
                     swapElements(a, first, mid);
@@ -87,6 +98,7 @@ public class QuickPane extends ListPane {
                 step++;
                 break;
 
+            // places the pivot at the end
             case 3:
                 swapElements(a, mid, last - 1);
                 pivotValue = a[last - 1];
@@ -97,12 +109,13 @@ public class QuickPane extends ListPane {
                 stepDescription.setText("Step 3:\nThe pivot value is placed at the end");
                 step++;
                 break;
+                
             case 4:
                 for (int i = 0; i < a.length; i++){
                     a[i] = c[i];
                 }
                 
-                // What's the middle element?
+                // Finds middle element
                 int mid = a.length / 2;
                 // Sort the first middle and last elements
                 if (a[first] > a[mid]) {
@@ -124,7 +137,7 @@ public class QuickPane extends ListPane {
                 boolean done = false; // this becomes true once all the elements are positioned relative to the pivot
                 int temp = 0;
                 
-                while (temp < 100) {
+                while (!done) {
                     // Move from the left until we find an element greater than the pivot
                     while (a[indexFromLeft] < pivotValue) {
                         indexFromLeft++;
@@ -133,7 +146,7 @@ public class QuickPane extends ListPane {
                     while (a[indexFromRight] > pivotValue) {
                         indexFromRight--;
                     }
-                    // Provided that the left and right pointers have not crossed, swap those elements
+                    // If left and right points have not crossed, swap the elements they point to
                     if (indexFromLeft < indexFromRight) {
                         swapElements(a, indexFromLeft, indexFromRight);
                         indexFromLeft++;
@@ -141,7 +154,6 @@ public class QuickPane extends ListPane {
                     } else {
                         done = true;
                     }
-                    temp++;
                 }
                 swapElements(a, last - 1, indexFromLeft);
 
@@ -168,18 +180,27 @@ public class QuickPane extends ListPane {
 
     }
 
+    /**
+     * Transplanted from SortingAlgorithms. Swaps given elements in a given array
+     * @param a
+     * @param i
+     * @param j 
+     */
     public static void swapElements(int[] a, int i, int j) {
         int temp = a[i];
         a[i] = a[j];
         a[j] = temp;
     }
 
+    /**
+     * It might seem strange to have the whole method again, but to have a step-by-step display the original method gets cut up so severely it can no longer recursively call itself; therefore, a fresh version of the method is required to finish the sort
+     * @param a input array
+     * @param first 
+     * @param last 
+     */
     public static void quickSort(int[] a, int first, int last) {
-        // Only do quickSort for more than three array elements
         if (last - first > 3) {
-            // What's the middle element?
             int mid = first + (last - first) / 2;
-            // Sort the first middle and last elements
             if (a[first] > a[mid]) {
                 swapElements(a, first, mid);
             }
@@ -189,25 +210,20 @@ public class QuickPane extends ListPane {
             if (a[first] > a[mid]) {
                 swapElements(a, first, mid);
             }
-            // Move the pivot to the end
             swapElements(a, mid, last - 1);
             int pivotValue = a[last - 1];
 
-            // Start from both sides and work inwards
             int indexFromLeft = first + 1;
             int indexFromRight = last - 2;
-            boolean done = false; // this becomes true once all the elements are positioned relative to the pivot
+            boolean done = false;
 
             while (!done) {
-                // Move from the left until we find an element greater than the pivot
                 while (a[indexFromLeft] < pivotValue) {
                     indexFromLeft++;
                 }
-                // Now move from the right until we find an element less than the pivot
                 while (a[indexFromRight] > pivotValue) {
                     indexFromRight--;
                 }
-                // Provided that the left and right pointers have not crossed, swap those elements
                 if (indexFromLeft < indexFromRight) {
                     swapElements(a, indexFromLeft, indexFromRight);
                     indexFromLeft++;
@@ -216,29 +232,28 @@ public class QuickPane extends ListPane {
                     done = true;
                 }
             }
-            // Once the pointers cross, move the pivot into the correct locaiton
             swapElements(a, last - 1, indexFromLeft);
-            // Let's use quickSort to sort each subarray on either side of the pivot
-            quickSort(a, first, indexFromLeft); // Should be left - 1 and left + 1, respectively. Something is up with the indexing
+            quickSort(a, first, indexFromLeft);
             quickSort(a, indexFromLeft, last);
         } else {
             insertionSort(a, first, last);
         }
     }
 
+    /**
+     * Helper method for the sort. Because quicksort isn't effective on small lists, I transplanted this from SortingAlgorithms from class to lend a hand.
+     * @param a
+     * @param first
+     * @param last 
+     */
     public static void insertionSort(int[] a, int first, int last) {
-        // Start at index first + 1
         for (int i = first + 1; i < last; i++) {
-            // Store the value that we'll insert
             int next = a[i];
-            // Start searching backwards for where we're going to insert next
             int iFill = i - 1;
             while (iFill >= 0 && next < a[iFill]) {
-                // As long as this is true, move the iFill element up one to make space 
                 a[iFill + 1] = a[iFill];
                 iFill--;
             }
-            // when we're done, we know where our element belongs
             a[iFill + 1] = next;
         }
     }
