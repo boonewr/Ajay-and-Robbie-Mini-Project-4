@@ -38,7 +38,7 @@ public class ListPane extends Pane {
     private TextField sizeField = new TextField("Enter preffered list size");
     private Button randomButton = new Button("Randomize");
     private Button resetButton = new Button("Reset");
-    protected Button sortButton = new Button("Sort!");
+    protected Button sortButton = new Button("Sort! Press Enter on the last input box");
     private Text sortName = new Text("name of sort type goes here");
     private Text sortDescription = new Text("sortDescription goes here");
 
