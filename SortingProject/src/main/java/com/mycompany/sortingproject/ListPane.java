@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -35,7 +36,7 @@ public class ListPane extends Pane {
     public ArrayList<Integer> MasterList = new ArrayList<Integer>();
     public ArrayList<TextField> fieldList = new ArrayList<TextField>();
 
-    private TextField sizeField = new TextField("Enter preffered list size");
+    protected TextField sizeField = new TextField("Enter preferred list size");
     private Button randomButton = new Button("Randomize");
     private Button resetButton = new Button("Reset");
     protected Button sortButton = new Button("Sort! Press Enter on the last input box");
@@ -116,8 +117,7 @@ public class ListPane extends Pane {
         sortButton.setVisible(true);
     }
 
-    // add an interface with just this? Something to think about 
-    //abstract public void processSort(ActionEvent evt);
+
     private void processField(ActionEvent evt) {
         for (int i = 0; i < MasterList.size(); i++) {
             MasterList.set(i, Integer.parseInt(fieldList.get(i).getText()));
@@ -135,17 +135,14 @@ public class ListPane extends Pane {
      */
     public void ALIGN(double h, double w) {
         sizeField.relocate((w - sizeField.getWidth()) / 2, (h - sizeField.getHeight()) / 10);
-        randomButton.relocate(sizeField.getLayoutX() + sizeField.getWidth() * 1.5, sizeField.getLayoutY());
+        randomButton.relocate(sizeField.getLayoutX() + sizeField.getWidth() * 1.5, sizeField.getLayoutY() + 50);
         sortName.relocate(10, 10);
         sortDescription.relocate(10, 50);
-        resetButton.relocate(randomButton.getLayoutX(), randomButton.getLayoutY() + randomButton.getHeight());
-        sortButton.relocate(resetButton.getLayoutX(), resetButton.getLayoutY() + resetButton.getHeight());
+        resetButton.relocate(randomButton.getLayoutX(), (randomButton.getLayoutY() + 50) + randomButton.getHeight());
+        sortButton.relocate(resetButton.getLayoutX(), (resetButton.getLayoutY() + 50) + resetButton.getHeight());
 
-        // Add whatever
-        // I'm not dead set on any of this layout, change it to what you want or lmk any ideas
     }
 
-    // Idea: use animations on all the field nodes to make them actually appear to move around. resetButton method instantly puts them back at all their positions 
     /**
      * Updates the displayed boxes with whatever is in MasterList
      */
